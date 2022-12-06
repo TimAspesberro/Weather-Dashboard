@@ -1,0 +1,2 @@
+var searchBtn = $('#searchBtn');
+
