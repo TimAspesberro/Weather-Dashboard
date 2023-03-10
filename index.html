@@ -7,52 +7,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Weather Dashboard</title>
 </head>
-<body>
+<body class="">
     
-    <nav class="navbar bg-dark text-white">
-        <div class="text-center">
+    <nav class="navbar bg-dark text-warning justify-content-center">
+        <div class="nav-header">
             <h1>Weather Dashboard</h1>
         </div>
     </nav>
 
-    <main>
+   
 
-        <div class="container text-center"> 
-            <div class="row">
-                <div class="col-2">
-                    <div id="citySearch">
-                        <h2>Search for a City:</h2>
-                        <input type="text" id="cityInput">
-                        <button id="searchBtn">Search</button>
-                    </div>
+    <div class="container" style="margin-top: 100px;"> 
+        <div id="weather-body" class="row">
+            
+            <div id="citySearch" class="col-3 pt-5 bg-success text-center">
+                <h2>Search for a City:</h2>
+                <input type="text" id="cityInput">
+                <button id="searchBtn">Search</button>
+            </div>
+            <div id="weatherEl" class="col-9">
+                <div id="weatherDisplay" class="row bg-warning text-center" style="min-height: 200px;">
+                    <h2>Atlanta</h2>
                 </div>
-                <div class="col-10">
-                    <div id="weatherDisplay">
-                        <h2>Atlanta</h2>
+                <div id="forecast" class="row text-center ">
+                    <div id="card1" class="card col" style="min-height: 200px;">
+                        <h3>Monday</h3>
                     </div>
-                    <div id="forecast" class="row">
-                        <div id="card1" class="card">
-                            <h3>Monday</h3>
-                        </div>
-                        <div id="card2" class="card">
-                            <h3>Tuesday</h3>
-                        </div>
-                        <div id="card3" class="card">
-                            <h3>Wednesday</h3>
-                        </div>
-                        <div id="card4" class="card">
-                            <h3>Thursday</h3>
-                        </div>
-                        <div id="card5" class="card">
-                            <h3>Friday</h3>
-                        </div>
+                    <div id="card2" class="card col">
+                        <h3>Tuesday</h3>
+                    </div>
+                    <div id="card3" class="card col">
+                        <h3>Wednesday</h3>
+                    </div>
+                    <div id="card4" class="card col">
+                        <h3>Thursday</h3>
+                    </div>
+                    <div id="card5" class="card col">
+                        <h3>Friday</h3>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+    </div> 
 
-    </main>
+
    
 </body>
+
 <script src="assets/script.js"></script>
+
 </html>
