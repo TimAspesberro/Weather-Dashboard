@@ -18,33 +18,35 @@
    
 
     <div class="container" style="margin-top: 100px;"> 
-        <div id="weather-body" class="row">
+        <div id="weather-body" class="row" style="border: 3px solid black; border-radius: 10px;">
             
-            <div id="citySearch" class="col-3 pt-5 bg-success text-center">
+            <div id="citySearch" class="col-3 pt-5 bg-success text-center" style="border-right: 3px solid black;">
                 <h2>Search for a City:</h2>
-                <h4>(City, State)</h4>
-                <input type="text" id="cityInput">
+                <div id="history">
+                    <!--Data will appear here-->
+                </div>
+                <input type="text" placeholder="(City, ST)" id="cityInput" class="text-center">
                 <button id="searchBtn">Search</button>
             </div>
             <div id="weatherEl" class="col-9">
-                <div id="weatherDisplay" class="row bg-warning text-center" style="min-height: 200px;">
+                <div id="weatherDisplay" class="row bg-warning" style="min-height: 200px; border-bottom: 3px solid black; min-height: 300px;">
                     <!--Data will appear here-->
                 </div>
                 <div id="forecast" class="row text-center ">
-                    <div id="card1" class="card col" style="min-height: 200px;">
-                        
+                    <div id="card1" class="card col" style="min-height: 300px;">
+                        <!--Data will appear here-->
                     </div>
                     <div id="card2" class="card col">
-                        
+                        <!--Data will appear here-->
                     </div>
                     <div id="card3" class="card col">
-                        
+                        <!--Data will appear here-->
                     </div>
                     <div id="card4" class="card col">
-                        
+                        <!--Data will appear here-->
                     </div>
                     <div id="card5" class="card col">
-                        
+                        <!--Data will appear here-->
                     </div>
                 </div>
             </div>
