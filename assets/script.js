@@ -12,8 +12,8 @@ let latitude = 0;
 let longitude = 0;
 var apiKey = 'bc12083e70d2d22298c2df1cec7101d9';
 
-var city = 'seattle';
-var state = 'wa';
+var city = '';
+var state = '';
 
 
 const setCoordinate = function (lon, lat,) {
@@ -166,10 +166,70 @@ const makeForecast = function (forecastData) {
 };
 
 const newLocation = function (x){
-  input = x.split(", ");
+  input = x.split(", ") || x.split(",");
   city = input[0];
   state = input[1];
-}
+};
+
+var inputLocation = `${city}${state}`;
+var histArray = ['boston, ma', 'denver, co', 'atlanta, ga', 'las vegas, nv', 'cleveland, oh'];
+
+
+const addCityArray = function(location) {
+  if(histArray.length < 5){
+    histArray.push(location)
+  } else if(histArray.length === 5){
+    
+  }
+};
+
+const makeHistory = function () {
+  if (histArray.length === 0){
+    console.log('array empty')
+  } else if(histArray.length > 0 && histArray.length <= 5){
+    for(let i = 0; i < histArray.length; i++){
+      document.getElementById('history').innerHTML += `
+      <button id="btn${i}" class="btn btn-primary col">${histArray[i]}</button>
+      <br><br>
+      `
+    }
+    if(histArray[0]){
+      document.getElementById(`btn0`).addEventListener('click', ()=> {
+        newLocation(histArray[0])
+        runApp()
+      })
+    };
+    if(histArray[1]){
+      document.getElementById(`btn1`).addEventListener('click', ()=> {
+        newLocation(histArray[1])
+        runApp()
+      })
+    }; 
+    if(histArray[2]){
+      document.getElementById(`btn2`).addEventListener('click', ()=> {
+        newLocation(histArray[2])
+        runApp()
+      })
+    }; 
+    if(histArray[3]){
+      document.getElementById(`btn3`).addEventListener('click', ()=> {
+        newLocation(histArray[3])
+        runApp()
+      })
+    }; 
+    if(histArray[4]){
+      document.getElementById(`btn4`).addEventListener('click', ()=> {
+        newLocation(histArray[4])
+        runApp()
+      })
+    }; 
+
+  }
+};
+
+
+makeHistory();
+
 
 
 
@@ -183,9 +243,9 @@ const runApp = function (){
 }
 
 
-
 searchBtn.addEventListener('click', function () {
   const cityState = document.querySelector('input').value;
+  histArray.push(cityState);
   newLocation(cityState);
   runApp();
 });
