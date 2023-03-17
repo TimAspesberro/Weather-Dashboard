@@ -6,7 +6,8 @@ var cardTwo = document.getElementById('card2');
 var cardThree = document.getElementById('card3');
 var cardFour = document.getElementById('card4');
 var cardFive = document.getElementById('card5');
-
+var historyEl = document.getElementById('history');
+var historyBox = document.getElementById('historyBox');
 
 let latitude = 0; 
 let longitude = 0;
@@ -22,7 +23,7 @@ const setCoordinate = function (lon, lat,) {
 }
 
 const getCity = function() {
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},+1&limit=1&appid=bc12083e70d2d22298c2df1cec7101d9`)
+  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},+1&limit=1&appid=${apiKey}`)
   .then(response => {
   return response.json();
   }).then(data => {
@@ -172,14 +173,21 @@ const newLocation = function (x){
 };
 
 var inputLocation = `${city}${state}`;
-var histArray = ['boston, ma', 'denver, co', 'atlanta, ga', 'las vegas, nv', 'cleveland, oh'];
+var histArray = [];
+
+const setHist = function(arr){
+  histArray = arr
+};
 
 
 const addCityArray = function(location) {
   if(histArray.length < 5){
-    histArray.push(location)
+    histArray.unshift(location);
+    makeHistory();
   } else if(histArray.length === 5){
-    
+    histArray.pop();
+    histArray.unshift(location);
+    makeHistory();
   }
 };
 
@@ -190,8 +198,8 @@ const makeHistory = function () {
     for(let i = 0; i < histArray.length; i++){
       document.getElementById('history').innerHTML += `
       <button id="btn${i}" class="btn btn-primary col">${histArray[i]}</button>
-      <br><br>
       `
+      localStorage.setItem(histArray[i], histArray[i])
     }
     if(histArray[0]){
       document.getElementById(`btn0`).addEventListener('click', ()=> {
@@ -228,11 +236,25 @@ const makeHistory = function () {
 };
 
 
-makeHistory();
+function allStorage() {
 
-
-
-
+  var localArray = [];
+  keys = Object.keys(localStorage).toString;
+  if(keys.length === 0){
+    console.log('storage empty')
+  }else{
+    for(i = 0; i <= keys.length; i++){
+      localArray.unshift(keys[i])
+    }
+    for(i = 0; i <= localArray.length; i++){
+      if(localArray[i] === "undefined" || undefined){
+        localArray.filter(word => word === "undefined")
+      }
+    }
+    console.log(localArray)
+    setHist(localArray)
+  }
+}
 
 const runApp = function (){
   getCity();
@@ -245,7 +267,18 @@ const runApp = function (){
 
 searchBtn.addEventListener('click', function () {
   const cityState = document.querySelector('input').value;
-  histArray.push(cityState);
   newLocation(cityState);
+  if(historyEl.children.length === 0){
+    console.log('null')
+  }else{
+    historyEl.remove();
+    historyBox.innerHTML = `
+    <div id="history" class="col"></div>
+    `
+  }
+  addCityArray(cityState);
   runApp();
 });
+
+
+allStorage();
