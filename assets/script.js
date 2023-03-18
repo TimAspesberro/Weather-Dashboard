@@ -177,6 +177,7 @@ var histArray = [];
 
 const setHist = function(arr){
   histArray = arr
+  makeHistory()
 };
 
 
@@ -239,20 +240,21 @@ const makeHistory = function () {
 function allStorage() {
 
   var localArray = [];
-  keys = Object.keys(localStorage).toString;
+  keys = Object.keys(localStorage);
+  // localStorgae.
   if(keys.length === 0){
     console.log('storage empty')
   }else{
-    for(i = 0; i <= keys.length; i++){
+    for(i = 0; i <= localStorage.length; i++){
+      if(localStorage[i] === "undefined" || ""){
+        localStorage.filter(word => word === "undefined" || undefined || "")
+      }
+    for(i = 0; i <= localStorage.length; i++){
       localArray.unshift(keys[i])
     }
-    for(i = 0; i <= localArray.length; i++){
-      if(localArray[i] === "undefined" || undefined){
-        localArray.filter(word => word === "undefined")
-      }
-    }
-    console.log(localArray)
-    setHist(localArray)
+  }
+    console.log(localStorage)
+    setHist(localStorage)
   }
 }
 

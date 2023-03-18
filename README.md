@@ -17,4 +17,11 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
 ## Project Description
-The function of this project is to create a website which will display the weather patterns for multiple cities. This is accomplished by using the 'OpenWeather' 5 day weather forecast API. 
+The function of this project is to create a website which will display the weather patterns for multiple cities. This is accomplished by using the 'OpenWeather' 5 day weather forecast API. It is then displayed on the website and the city is saved in the history section under the serach bar. 
+
+## Issues
+Currently the site is functional but I ran into an issue using local storage. It seems to be adding undefined in the local storage array when the page is refreshed and I have not yet found an adequate solution.
+
+## Links
+GitHub: https://github.com/TimAspesberro/Weather-Dashboard
+Live Link: https://timaspesberro.github.io/Weather-Dashboard/
